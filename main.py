@@ -10,11 +10,15 @@ class CLayer(Layer):
 
 
 class CarAgentSensorData:
-    def __init__(self, sensor_front=[0], sensor_left=[0], sensor_right=[0], sensor_back=[0]):
+    def __init__(self, sensor_front=[0], sensor_left=[0], sensor_right=[0], sensor_back=[0], lr=0.5):
         self.s_front_shape = np.shape(sensor_front)
         self.s_left_shape = np.shape(sensor_left)
         self.s_right_shape = np.shape(sensor_right)
         self.s_back_shape = np.shape(sensor_back)
+
+        self.weights = np.random # some kinda array
+        self.bias = 0 # to be updated during training
+        self.learning_rate = lr
 
     def get_data(self):
         return ([self.s_front_shape,
